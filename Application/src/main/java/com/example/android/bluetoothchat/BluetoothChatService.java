@@ -263,7 +263,7 @@ public class BluetoothChatService {
         // Send a failure message back to the Activity
         Message msg = mHandler.obtainMessage(Constants.MESSAGE_TOAST);
         Bundle bundle = new Bundle();
-        bundle.putString(Constants.TOAST, "Unable to connect device");
+        bundle.putString(Constants.TOAST, "无法连接狗狗");
         msg.setData(bundle);
         mHandler.sendMessage(msg);
 
@@ -282,7 +282,7 @@ public class BluetoothChatService {
         // Send a failure message back to the Activity
         Message msg = mHandler.obtainMessage(Constants.MESSAGE_TOAST);
         Bundle bundle = new Bundle();
-        bundle.putString(Constants.TOAST, "Device connection was lost");
+        bundle.putString(Constants.TOAST, "狗狗掉线啦");
         msg.setData(bundle);
         mHandler.sendMessage(msg);
 

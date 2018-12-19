@@ -279,6 +279,7 @@ public class BluetoothChatFragment extends Fragment {
         @Override
         public void handleMessage(Message msg) {
             FragmentActivity activity = getActivity();
+            Util util = new Util(activity);
             switch (msg.what) {
                 case Constants.MESSAGE_STATE_CHANGE:
                     switch (msg.arg1) {
@@ -310,15 +311,19 @@ public class BluetoothChatFragment extends Fragment {
                 case Constants.MESSAGE_DEVICE_NAME:
                     // save the connected device's name
                     mConnectedDeviceName = msg.getData().getString(Constants.DEVICE_NAME);
+                    String devString = "狗狗:\"" + mConnectedDeviceName+"\"连接成功";
                     if (null != activity) {
-                        Toast.makeText(activity, "Connected to "
-                                + mConnectedDeviceName, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(activity, devString
+                                 , Toast.LENGTH_SHORT).show();
+                        util.notify(devString);
                     }
                     break;
                 case Constants.MESSAGE_TOAST:
                     if (null != activity) {
-                        Toast.makeText(activity, msg.getData().getString(Constants.TOAST),
+                        String toastString = msg.getData().getString(Constants.TOAST);
+                        Toast.makeText(activity, toastString,
                                 Toast.LENGTH_SHORT).show();
+                        util.notify(toastString);
                     }
                     break;
             }
